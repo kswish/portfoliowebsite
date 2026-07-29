@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;overflow:hidden;}
+  body{-webkit-font-smoothing:none;}
+  a{color:#0000cc;text-decoration:underline;}
+  a:hover{color:#cc0033;}
+  ::-webkit-scrollbar{width:15px;height:15px;}
+  ::-webkit-scrollbar-track{background:#e8e8e8;border-left:1px solid #000;}
+  ::-webkit-scrollbar-thumb{background:#c4c4c4;border:1px solid #000;}
+  ::-webkit-scrollbar-thumb:hover{background:#b0b0b0;}
+  ::-webkit-scrollbar-corner{background:#e8e8e8;}
+</style>
+</helmet>
+<div ref="{{ setRoot }}" style="position:fixed;inset:0;overflow:hidden;background-color:#adadad;background-image:repeating-conic-gradient(#909090 0% 25%,#bcbcbc 0% 50%);background-size:2px 2px;font-family:Helvetica,Arial,sans-serif;color:#000;cursor:default;user-select:none;-webkit-user-select:none;">
+
+  <div style="position:absolute;top:0;left:0;right:0;height:22px;background:#ffffff;border-bottom:1px solid #000;display:flex;align-items:center;gap:2px;padding:0 6px;z-index:9000;font-family:'Pixelify Sans',sans-serif;font-size:14px;">
+    <div style="padding:0 9px;height:100%;display:flex;align-items:center;" style-hover="background:#000;color:#fff;">
+      <div style="width:9px;height:9px;background:#000;transform:rotate(45deg);"></div>
+    </div>
+    <div style="padding:0 9px;height:100%;display:flex;align-items:center;" style-hover="background:#000;color:#fff;">File</div>
+    <div style="padding:0 9px;height:100%;display:flex;align-items:center;" style-hover="background:#000;color:#fff;">Edit</div>
+    <div style="padding:0 9px;height:100%;display:flex;align-items:center;" style-hover="background:#000;color:#fff;">View</div>
+    <div style="padding:0 9px;height:100%;display:flex;align-items:center;" style-hover="background:#000;color:#fff;">Special</div>
+    <div style="margin-left:auto;font-size:13px;letter-spacing:0.5px;" ref="{{ setClock }}"></div>
+  </div>
+
+  <div style="position:absolute;top:36px;left:22px;display:flex;flex-direction:column;gap:24px;z-index:1000;">
+    <div data-open="about" style="width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;">
+      <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;">
+        <div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div>
+        <div style="height:2px;background:#000;"></div>
+        <div style="height:2px;background:#000;width:65%;"></div>
+        <div style="height:2px;background:#000;"></div>
+        <div style="height:2px;background:#000;width:80%;"></div>
+      </div>
+      <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">About Me</div>
+    </div>
+    <div data-open="projects" style="width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;">
+      <div style="position:relative;width:38px;height:30px;">
+        <div style="position:absolute;top:1px;left:1px;width:16px;height:7px;background:#dcdcdc;border:1px solid #000;border-bottom:none;border-radius:2px 4px 0 0;"></div>
+        <div style="position:absolute;top:7px;left:0;width:38px;height:23px;background:#ededed;border:1px solid #000;border-radius:1px;"></div>
+      </div>
+      <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Projects</div>
+    </div>
+    <div data-open="link:#resume" style="width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;">
+      <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:14px 4px 0;display:flex;flex-direction:column;gap:3px;">
+        <div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div>
+        <div style="position:absolute;top:4px;left:4px;font-family:'Pixelify Sans',sans-serif;font-size:8px;color:#000;">PDF</div>
+        <div style="height:2px;background:#000;"></div>
+        <div style="height:2px;background:#000;width:70%;"></div>
+      </div>
+      <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Resume.pdf</div>
+    </div>
+    <div data-open="contact" style="width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;">
+      <div style="width:34px;height:26px;background:#fff;border:1px solid #000;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-1px;left:-1px;width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-top:14px solid #dcdcdc;"></div>
+        <div style="position:absolute;top:0;left:0;width:18px;height:14px;border-bottom:1px solid #000;transform:skewX(-38deg);transform-origin:top left;"></div>
+        <div style="position:absolute;top:0;right:0;width:18px;height:14px;border-bottom:1px solid #000;transform:skewX(38deg);transform-origin:top right;"></div>
+      </div>
+      <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Contact</div>
+    </div>
+  </div>
+
+  <div data-open="hd" style="position:absolute;top:36px;right:22px;width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;z-index:1000;">
+    <div style="width:34px;height:30px;background:#ededed;border:1px solid #000;position:relative;border-radius:1px;">
+      <div style="position:absolute;left:5px;right:5px;top:5px;height:7px;background:#c9c9c9;border:1px solid #000;"></div>
+      <div style="position:absolute;left:5px;right:5px;bottom:5px;height:5px;background:#c9c9c9;border:1px solid #000;"></div>
+    </div>
+    <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Macintosh HD</div>
+  </div>
+
+  <div data-open="trash" style="position:absolute;bottom:26px;right:26px;width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;z-index:1000;">
+    <div style="position:relative;width:26px;height:30px;">
+      <div style="position:absolute;top:0;left:1px;width:24px;height:4px;background:#d9d9d9;border:1px solid #000;border-radius:2px;"></div>
+      <div style="position:absolute;top:4px;left:2px;width:22px;height:26px;background:#e6e6e6;border:1px solid #000;clip-path:polygon(6% 0,94% 0,84% 100%,16% 100%);"></div>
+      <div style="position:absolute;top:8px;left:8px;width:1px;height:16px;background:#000;"></div>
+      <div style="position:absolute;top:8px;left:13px;width:1px;height:16px;background:#000;"></div>
+      <div style="position:absolute;top:8px;left:18px;width:1px;height:16px;background:#000;"></div>
+    </div>
+    <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Trash</div>
+  </div>
+
+  <!-- ABOUT -->
+  <div data-win="about" style="display:none;position:absolute;width:460px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">About Me</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:21px;margin-bottom:3px;">Kimberlee Swisher</h2>
+      <div style="font-size:13px;color:#333;margin-bottom:16px;line-height:1.4;">Associate Director &amp; Professor, GAME School<br>Arizona State University — undergraduate programming &amp; curriculum</div>
+      <p style="margin-bottom:16px;">Kimberlee Swisher is an educator working at the intersection of technology, music, media culture, play, making, and pedagogy. She is broadly interested in the intersections of play, arts, technology, and education.</p>
+      <div style="background:#fdf6b2;border:1px solid #d8cf6a;box-shadow:2px 3px 7px rgba(0,0,0,0.16);padding:15px 17px;transform:rotate(-1.2deg);margin:8px 6px 6px;">
+        <div style="font-family:'Pixelify Sans',sans-serif;font-size:11px;margin-bottom:7px;letter-spacing:0.6px;color:#7a6f13;">MY ETHOS</div>
+        <em style="font-size:13.5px;line-height:1.6;">"my ethos is to create meaningful experiences with technology that engage the senses and enchant the imagination – this means playing with code, cameras, musical hardware, open source software, old toys, recyclables, gaming controllers, sharpies, copper tape, cameras, and code to make new fun."</em>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div data-win="projects" style="display:none;position:absolute;width:540px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Projects</span>
+    </div>
+    <div data-content style="padding:16px;overflow:auto;max-height:66vh;">
+      <div style="font-size:12px;color:#555;margin-bottom:14px;font-family:'Pixelify Sans',sans-serif;">6 items — double-click to open</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,96px);gap:18px;justify-content:start;">
+        <div data-open="zenden" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">ZenDen</div>
+        </div>
+        <div data-open="imagesteam" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">ImageSTEAM</div>
+        </div>
+        <div data-open="youtube" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Creative Code Tutorials</div>
+        </div>
+        <div data-open="soundscape" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Soundscape</div>
+        </div>
+        <div data-open="dcsi" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Digital Culture Summer Institute</div>
+        </div>
+        <div data-open="archive" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="position:relative;width:38px;height:30px;"><div style="position:absolute;top:1px;left:1px;width:16px;height:7px;background:#dcdcdc;border:1px solid #000;border-bottom:none;border-radius:2px 4px 0 0;"></div><div style="position:absolute;top:7px;left:0;width:38px;height:23px;background:#ededed;border:1px solid #000;border-radius:1px;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Archive</div>
+        </div>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <!-- ARCHIVE -->
+  <div data-win="archive" style="display:none;position:absolute;width:480px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Archive</span>
+    </div>
+    <div data-content style="padding:16px;overflow:auto;max-height:66vh;">
+      <div style="font-size:12px;color:#555;margin-bottom:14px;font-family:'Pixelify Sans',sans-serif;">Older &amp; smaller work — 5 items</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,96px);gap:18px;justify-content:start;">
+        <div data-open="aivalentines" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">AI Valentines</div>
+        </div>
+        <div data-open="wintersong" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Winter Song</div>
+        </div>
+        <div data-open="makeymakey" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Makey Makey Sampler</div>
+        </div>
+        <div data-open="ddr" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">DDR Dance Pad Instrument</div>
+        </div>
+        <div data-open="sonicvr" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Sonic VR Game</div>
+        </div>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div data-win="contact" style="display:none;position:absolute;width:340px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Contact</span>
+    </div>
+    <div data-content style="padding:20px;overflow:auto;max-height:66vh;text-align:center;">
+      <div style="font-family:'Pixelify Sans',sans-serif;font-size:16px;margin-bottom:14px;">Say hello!</div>
+      <p style="font-size:13.5px;line-height:1.5;margin-bottom:16px;">Kimberlee Swisher<br>GAME School · Arizona State University</p>
+      <a href="mailto:hello@example.com" style="font-family:'Pixelify Sans',sans-serif;font-size:15px;">hello@example.com</a>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <!-- PROJECT DETAILS -->
+  <div data-win="zenden" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">ZenDen</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">ZenDen</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">I.D.E.A Museum, Mesa, AZ · Nov 2019 – Jan 2024</div>
+      <p style="margin-bottom:14px;">An interactive space that responds with changing meditative sounds to movement — and stillness — of museum visitors inside a geodesic dome. Each bench adds a layer of sound; each layer moves along its own slow, unique path across a 10-speaker surround system, giving the soundscape a sense of movement and life.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Max MSP</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">surround sound</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">180° camera tracking</span>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="imagesteam" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">ImageSTEAM</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">ImageSTEAM</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">NSF DRL-1949384 · Jun 2020 – Jul 2025</div>
+      <p style="margin-bottom:14px;">An NSF-funded program introducing AI and computer vision concepts to middle schoolers, through teacher professional development, curriculum co-creation, and classroom deployment at the 6th–8th grade level.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">curriculum design</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">AI</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">visual media</span>
+      </div>
+      <a href="https://www.imagesteam.org/" target="_blank" rel="noopener">imagesteam.org →</a>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="youtube" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Creative Code Tutorials</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Creative Code YouTube Tutorials</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">Nov 2017 – ongoing</div>
+      <p style="margin-bottom:14px;">75+ video tutorials on digital images, creative code, and Max MSP, built primarily for an undergraduate computational-thinking course.</p>
+      <a href="https://www.youtube.com/kimberleeswisher" target="_blank" rel="noopener">youtube.com/kimberleeswisher →</a>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="soundscape" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Soundscape</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Soundscape</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">I.D.E.A Museum, Mesa, AZ · Feb 2014 – Feb 2018</div>
+      <p style="margin-bottom:14px;">An interactive environment generating sound in response to visitor movement and position, tracked via Kinect inside a geodesic dome.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Kinect</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Max MSP</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">gestural sound</span>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="dcsi" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Digital Culture Summer Institute</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Digital Culture Summer Institute</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">Arizona State University</div>
+      <p>An interdisciplinary digital media summer program for 7th–12th graders at Arizona State University.</p>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <!-- ARCHIVE DETAILS -->
+  <div data-win="aivalentines" style="display:none;position:absolute;width:420px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">AI Valentines</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">AI Valentines</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">2024</div>
+      <p>A generative AI + image-editing classroom project.</p>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="wintersong" style="display:none;position:absolute;width:420px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Winter Song</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Winter Song</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">2020</div>
+      <p style="margin-bottom:14px;">A music video with p5.js-driven visuals — a cover of an Ingrid Michaelson song.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">p5.js</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">music video</span>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="makeymakey" style="display:none;position:absolute;width:420px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Makey Makey Sampler</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Makey Makey Sampler</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">2014</div>
+      <p style="margin-bottom:14px;">A Max-based sampler triggered by a Makey Makey.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Max MSP</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Makey Makey</span>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="ddr" style="display:none;position:absolute;width:420px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">DDR Dance Pad Instrument</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">DDR Dance Pad Instrument</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">2014</div>
+      <p style="margin-bottom:14px;">A Max patch turning a DDR pad into a body-performed sampler.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Max MSP</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">DDR pad</span>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="sonicvr" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Sonic VR Game</span>
+    </div>
+    <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
+      <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">"How does your body sound?"</h2>
+      <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">Sonic VR game · NIME paper/poster · 2010</div>
+      <p style="margin-bottom:14px;">A multiplayer, biosensor-driven soundscape game.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">biosensors</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">multiplayer</span>
+        <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">NIME</span>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <!-- FLAVOR: HD / Trash -->
+  <div data-win="hd" style="display:none;position:absolute;width:380px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Macintosh HD</span>
+    </div>
+    <div data-content style="padding:16px;overflow:auto;max-height:66vh;">
+      <div style="font-size:12px;color:#555;margin-bottom:12px;font-family:'Pixelify Sans',sans-serif;">2 items · 812K available</div>
+      <div style="display:flex;gap:24px;">
+        <div data-open="projects" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="position:relative;width:38px;height:30px;"><div style="position:absolute;top:1px;left:1px;width:16px;height:7px;background:#dcdcdc;border:1px solid #000;border-bottom:none;border-radius:2px 4px 0 0;"></div><div style="position:absolute;top:7px;left:0;width:38px;height:23px;background:#ededed;border:1px solid #000;border-radius:1px;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Projects</div>
+        </div>
+        <div data-open="about" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
+          <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:65%;"></div><div style="height:2px;background:#000;"></div></div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">About Me</div>
+        </div>
+      </div>
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+  <div data-win="trash" style="display:none;position:absolute;width:340px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+    <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
+      <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Trash</span>
+    </div>
+    <div data-content style="padding:22px 18px;overflow:auto;max-height:66vh;text-align:center;color:#555;font-size:13px;">
+      The Trash is empty.
+    </div>
+    <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      setRoot: (el) => { if (el) this.root = el; },
+      setClock: (el) => { if (el) this.clock = el; },
+    };
+  }
+
+  componentDidMount() {
+    this.z = 20;
+    this.opened = 0;
+    this.wire();
+    this.tick();
+    this.timer = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  tick() {
+    if (!this.clock) return;
+    const d = new Date();
+    let h = d.getHours();
+    const m = String(d.getMinutes()).padStart(2, '0');
+    const ap = h < 12 ? 'AM' : 'PM';
+    h = h % 12; if (h === 0) h = 12;
+    this.clock.textContent = h + ':' + m + ' ' + ap;
+  }
+
+  wire() {
+    const root = this.root;
+    if (!root || this._wired) return;
+    this._wired = true;
+
+    root.addEventListener('dblclick', (e) => {
+      const ic = e.target.closest('[data-open]');
+      if (ic) this.open(ic.getAttribute('data-open'));
+    });
+
+    root.addEventListener('click', (e) => {
+      const ic = e.target.closest('[data-open]');
+      if (ic) { this.select(ic); return; }
+      if (!e.target.closest('[data-win]')) this.select(null);
+    });
+
+    root.addEventListener('pointerdown', (e) => {
+      const win = e.target.closest('[data-win]');
+      if (win) this.front(win);
+      if (e.target.closest('[data-close]')) {
+        if (win) win.style.display = 'none';
+        e.stopPropagation();
+        return;
+      }
+      if (e.target.closest('[data-resize]')) { this.startResize(e, win); return; }
+      if (e.target.closest('[data-drag]')) { this.startDrag(e, win); return; }
+    });
+  }
+
+  front(win) { win.style.zIndex = ++this.z; }
+
+  open(id) {
+    if (id.indexOf('link:') === 0) {
+      const href = id.slice(5);
+      if (href && href[0] !== '#') window.open(href, '_blank');
+      else window.location.href = href;
+      return;
+    }
+    const win = this.root.querySelector('[data-win="' + id + '"]');
+    if (!win) return;
+    if (win.style.display !== 'block') {
+      win.style.display = 'block';
+      if (!win.dataset.pos) {
+        const w = win.offsetWidth || 420;
+        const off = (this.opened++ % 6) * 26;
+        let l = Math.max(20, (this.root.clientWidth - w) / 2 - 60 + off);
+        let t = 44 + off;
+        win.style.left = l + 'px';
+        win.style.top = t + 'px';
+        win.dataset.pos = '1';
+      }
+    }
+    this.front(win);
+  }
+
+  select(ic) {
+    this.root.querySelectorAll('[data-label]').forEach((l) => {
+      l.style.background = 'transparent';
+      l.style.color = '#000';
+    });
+    if (ic) {
+      const l = ic.querySelector('[data-label]');
+      if (l) { l.style.background = '#000'; l.style.color = '#fff'; }
+    }
+  }
+
+  startDrag(e, win) {
+    e.preventDefault();
+    const sx = e.clientX, sy = e.clientY;
+    const ox = win.offsetLeft, oy = win.offsetTop;
+    const root = this.root;
+    const move = (ev) => {
+      let nx = ox + ev.clientX - sx;
+      let ny = oy + ev.clientY - sy;
+      nx = Math.max(-win.offsetWidth + 64, Math.min(root.clientWidth - 40, nx));
+      ny = Math.max(23, Math.min(root.clientHeight - 24, ny));
+      win.style.left = nx + 'px';
+      win.style.top = ny + 'px';
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  }
+
+  startResize(e, win) {
+    e.preventDefault();
+    const content = win.querySelector('[data-content]');
+    const sx = e.clientX, sy = e.clientY;
+    const sw = win.offsetWidth, sh = content.offsetHeight;
+    const move = (ev) => {
+      win.style.width = Math.max(260, sw + ev.clientX - sx) + 'px';
+      content.style.maxHeight = 'none';
+      content.style.height = Math.max(90, sh + ev.clientY - sy) + 'px';
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+  }
+}
+</script>
+</body>
+</html>
