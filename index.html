@@ -10,6 +10,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -24,7 +25,7 @@
   ::-webkit-scrollbar-corner{background:#e8e8e8;}
 </style>
 </helmet>
-<div ref="{{ setRoot }}" style="position:fixed;inset:0;overflow:hidden;background-color:#adadad;background-image:repeating-conic-gradient(#909090 0% 25%,#bcbcbc 0% 50%);background-size:2px 2px;font-family:Helvetica,Arial,sans-serif;color:#000;cursor:default;user-select:none;-webkit-user-select:none;">
+<div ref="{{ setRoot }}" style="position:fixed;inset:0;overflow:hidden;background-color:#adadad;background-image:repeating-conic-gradient(#E74973 0% 25%,#bcbcbc 0% 50%);background-size:2px 2px;font-family:Helvetica,Arial,sans-serif;color:#000;cursor:default;user-select:none;-webkit-user-select:none;">
 
   <div style="position:absolute;top:0;left:0;right:0;height:22px;background:#ffffff;border-bottom:1px solid #000;display:flex;align-items:center;gap:2px;padding:0 6px;z-index:9000;font-family:'Pixelify Sans',sans-serif;font-size:14px;">
     <div style="padding:0 9px;height:100%;display:flex;align-items:center;" style-hover="background:#000;color:#fff;">
@@ -72,6 +73,12 @@
       </div>
       <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Contact</div>
     </div>
+    <!-- 
+    <div data-open="calendar" style="width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;">
+      <div> <i class="fa fa-calendar" style="font-size:36px;color:whitesmoke"></i> </div>
+This is a standard HTML comment 
+      <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 5px;">Make an appointment</div>
+    </div> -->
   </div>
 
   <div data-open="hd" style="position:absolute;top:36px;right:22px;width:92px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:default;text-align:center;z-index:1000;">
@@ -101,11 +108,11 @@
     </div>
     <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
       <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:21px;margin-bottom:3px;">Kimberlee Swisher</h2>
-      <div style="font-size:13px;color:#333;margin-bottom:16px;line-height:1.4;">Associate Director &amp; Professor, GAME School<br>Arizona State University — undergraduate programming &amp; curriculum</div>
-      <p style="margin-bottom:16px;">Kimberlee Swisher is an educator working at the intersection of technology, music, media culture, play, making, and pedagogy. She is broadly interested in the intersections of play, arts, technology, and education.</p>
+      <div style="font-size:13px;color:#333;margin-bottom:16px;line-height:1.4;">Associate Director &amp; Professor, <a href="https://search.asu.edu/profile/776682" target="_blank" rel="noopener">The GAME School →</a> <br>Herberger Institute for Design and The Arts<br>Arizona State University — undergraduate programming &amp; curriculum</div>
+      <p style="margin-bottom:16px;">Artist and educator working at the intersection of technology, music, media culture, play, making, and pedagogy. </p>
       <div style="background:#fdf6b2;border:1px solid #d8cf6a;box-shadow:2px 3px 7px rgba(0,0,0,0.16);padding:15px 17px;transform:rotate(-1.2deg);margin:8px 6px 6px;">
-        <div style="font-family:'Pixelify Sans',sans-serif;font-size:11px;margin-bottom:7px;letter-spacing:0.6px;color:#7a6f13;">MY ETHOS</div>
-        <em style="font-size:13.5px;line-height:1.6;">"my ethos is to create meaningful experiences with technology that engage the senses and enchant the imagination – this means playing with code, cameras, musical hardware, open source software, old toys, recyclables, gaming controllers, sharpies, copper tape, cameras, and code to make new fun."</em>
+        <div style="font-family:'Pixelify Sans',sans-serif;font-size:12px;margin-bottom:7px;letter-spacing:0.6px;color:#7a6f13;">MY ETHOS</div>
+        <p style="font-size:15px;line-height:1.6;">"my ethos is to create meaningful experiences with technology that engage the senses and enchant the imagination – this means playing with code, cameras, musical hardware, open source software, old toys, recyclables, gaming controllers, sharpies, copper tape, cameras, and code to make new fun."</p>
       </div>
     </div>
     <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
@@ -156,7 +163,7 @@
       <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Archive</span>
     </div>
     <div data-content style="padding:16px;overflow:auto;max-height:66vh;">
-      <div style="font-size:12px;color:#555;margin-bottom:14px;font-family:'Pixelify Sans',sans-serif;">Older &amp; smaller work — 5 items</div>
+      <div style="font-size:12px;color:#555;margin-bottom:14px;font-family:'Pixelify Sans',sans-serif;">Archived work — 5 items</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,96px);gap:18px;justify-content:start;">
         <div data-open="aivalentines" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
           <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:70%;"></div><div style="height:2px;background:#000;"></div></div>
@@ -184,21 +191,26 @@
   </div>
 
   <!-- CONTACT -->
-  <div data-win="contact" style="display:none;position:absolute;width:340px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+  <div data-win="contact" style="display:none;position:absolute;width:850px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
     <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
       <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
       <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Contact</span>
     </div>
     <div data-content style="padding:20px;overflow:auto;max-height:66vh;text-align:center;">
-      <div style="font-family:'Pixelify Sans',sans-serif;font-size:16px;margin-bottom:14px;">Say hello!</div>
-      <p style="font-size:13.5px;line-height:1.5;margin-bottom:16px;">Kimberlee Swisher<br>GAME School · Arizona State University</p>
-      <a href="mailto:hello@example.com" style="font-family:'Pixelify Sans',sans-serif;font-size:15px;">hello@example.com</a>
+      <div style="font-family:'Pixelify Sans',sans-serif;font-size:18px;margin-bottom:14px;">Say hello!</div>
+      <p style="font-size:13.5px;line-height:1.5;margin-bottom:16px;">Kimberlee Swisher<br>The GAME School · Herberger Institute for Design and the Arts <br> Arizona State University</p>
+      <p style="font-family:'Pixelify Sans',sans-serif;font-size:15px;">kimberlee dot swisher at asu dot edu</p>
+       <!-- Google Calendar Appointment Scheduling begin -->
+<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ03ybOvwYOj62oxilY2yYVtuhLi1W2ik--YOetRM34p_SlvmC8lSQeE3QnSLnzGswLlnyrWTrJp?gv=true" style="border: 0px; width: 927px; height: 600px;" width="100%" height="600" frameborder="0"></iframe>
+<!-- end Google Calendar Appointment Scheduling -->
     </div>
     <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
   </div>
 
+    
+
   <!-- PROJECT DETAILS -->
-  <div data-win="zenden" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
+  <div data-win="zenden" style="display:none;position:absolute;width:840px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
     <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
       <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
       <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">ZenDen</span>
@@ -212,6 +224,10 @@
         <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">surround sound</span>
         <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">180° camera tracking</span>
       </div>
+
+      <a href="https://youtu.be/-RbM_qy5hwI?si=bYADV_HqHcrygvGu" target="_blank" rel="noopener">Watch a video of the Zen Den →</a>
+      <iframe width="100%" height="100%" scrolling="no" frameborder="yes" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2089131354&amp;color=%23386688&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" style="width: 600; height: 300px;"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-988410506" title="Kimberlee" target="_blank" style="color: #cccccc; text-decoration: none;">Kimberlee</a> · <a href="https://soundcloud.com/user-988410506/zen-den-nap-mode-excerpt" title="Zen Den Nap Mode excerpt" target="_blank" style="color: #cccccc; text-decoration: none;">Zen Den Nap Mode excerpt</a></div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/-RbM_qy5hwI?si=nBjSo3HKkUcYj-Qz" title="YouTube video player" frameborder="10" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
   </div>
@@ -243,7 +259,7 @@
     <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
       <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Creative Code YouTube Tutorials</h2>
       <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">Nov 2017 – ongoing</div>
-      <p style="margin-bottom:14px;">75+ video tutorials on digital images, creative code, and Max MSP, built primarily for an undergraduate computational-thinking course.</p>
+      <p style="margin-bottom:14px;">175+ video tutorials on digital images, creative code, Max MSP, and audio and music production, created mostly for undergraduate digital media and computational thinking courses.</p>
       <a href="https://www.youtube.com/kimberleeswisher" target="_blank" rel="noopener">youtube.com/kimberleeswisher →</a>
     </div>
     <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
@@ -252,7 +268,7 @@
   <div data-win="soundscape" style="display:none;position:absolute;width:440px;background:#fff;border:1px solid #000;box-shadow:2px 2px 0 rgba(0,0,0,0.35);z-index:100;">
     <div data-drag style="position:relative;height:20px;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(to bottom,#000 0 1px,#fff 1px 2px);border-bottom:1px solid #000;">
       <div data-close style="position:absolute;left:5px;top:4px;width:11px;height:11px;background:#fff;border:1px solid #000;" style-hover="background:#000;"></div>
-      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Soundscape</span>
+      <span style="background:#fff;padding:0 12px;font-family:'Pixelify Sans',sans-serif;font-size:13px;line-height:1;">Soundscape Dome</span>
     </div>
     <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
       <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">Soundscape</h2>
@@ -263,6 +279,7 @@
         <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">Max MSP</span>
         <span style="border:1px solid #000;padding:2px 8px;font-size:11px;font-family:'Pixelify Sans',sans-serif;background:#f0f0f0;border-radius:2px;">gestural sound</span>
       </div>
+      <a href="https://youtu.be/iQVoXQAIDGg" target="_blank" rel="noopener">Watch video documentation of the Soundscape Dome →</a>
     </div>
     <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
   </div>
@@ -289,7 +306,10 @@
     <div data-content style="padding:18px;font-size:14px;line-height:1.55;overflow:auto;max-height:66vh;">
       <h2 style="font-family:'Pixelify Sans',sans-serif;font-size:17px;margin-bottom:4px;">AI Valentines</h2>
       <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:12px;">2024</div>
-      <p>A generative AI + image-editing classroom project.</p>
+      <p>A classroom project for 100 level media arts and culture class using generative AI images (with Adobe Firefly) + image-editing techniques, encouraging engagement and critical discussion of AI image generation.</p>
+
+       <a href="https://youtu.be/qUV9fGI3ZN8?si=v2y65hBFNRTDp8Pf" target="_blank" rel="noopener">Watch how-to video →</a>
+
     </div>
     <div data-resize style="position:absolute;right:0;bottom:0;width:15px;height:15px;background:#fff;border-left:1px solid #000;border-top:1px solid #000;cursor:nwse-resize;z-index:5;"></div>
   </div>
@@ -374,11 +394,11 @@
       <div style="display:flex;gap:24px;">
         <div data-open="projects" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
           <div style="position:relative;width:38px;height:30px;"><div style="position:absolute;top:1px;left:1px;width:16px;height:7px;background:#dcdcdc;border:1px solid #000;border-bottom:none;border-radius:2px 4px 0 0;"></div><div style="position:absolute;top:7px;left:0;width:38px;height:23px;background:#ededed;border:1px solid #000;border-radius:1px;"></div></div>
-          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">Projects</div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:12px;line-height:1.25;padding:1px 4px;">Projects</div>
         </div>
         <div data-open="about" style="width:96px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;">
           <div style="width:26px;height:32px;background:#fff;border:1px solid #000;position:relative;padding:7px 4px 0;display:flex;flex-direction:column;gap:3px;"><div style="position:absolute;top:0;right:0;width:8px;height:8px;background:#cfcfcf;border-left:1px solid #000;border-bottom:1px solid #000;"></div><div style="height:2px;background:#000;"></div><div style="height:2px;background:#000;width:65%;"></div><div style="height:2px;background:#000;"></div></div>
-          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:11px;line-height:1.25;padding:1px 4px;">About Me</div>
+          <div data-label style="font-family:'Pixelify Sans',sans-serif;font-size:12px;line-height:1.25;padding:1px 4px;">About Me</div>
         </div>
       </div>
     </div>
